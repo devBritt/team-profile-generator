@@ -36,8 +36,5 @@ test("gets engineer's role", () => {
     };
     const engineer = new Engineer(data);
 
-    expect(engineer.getRole()).toHaveProperty('name');
-    expect(engineer.getRole()).toHaveProperty('id');
-    expect(engineer.getRole()).toHaveProperty('email');
-    expect(engineer.getRole()).toHaveProperty('github');
+    expect(engineer.getRole()).toBe('Engineer');
 });

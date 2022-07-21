@@ -36,8 +36,5 @@ test("gets intern's role", () => {
     };
     const intern = new Intern(data);
 
-    expect(intern.getRole()).toHaveProperty('name');
-    expect(intern.getRole()).toHaveProperty('id');
-    expect(intern.getRole()).toHaveProperty('email');
-    expect(intern.getRole()).toHaveProperty('school');
+    expect(intern.getRole()).toBe('Intern');
 });

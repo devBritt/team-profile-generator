@@ -29,7 +29,5 @@ test("gets employee's email", () => {
 test("gets employee's role", () => {
     const employee = new Employee('Brittany', '234', 'myemail@gmail.com');
 
-    expect(employee.getRole()).toHaveProperty('name');
-    expect(employee.getRole()).toHaveProperty('id');
-    expect(employee.getRole()).toHaveProperty('email');
+    expect(employee.getRole()).toBe('Employee');
 });

@@ -36,8 +36,5 @@ test("gets manager's details", () => {
     };
     const manager = new Manager(data);
 
-    expect(manager.getRole()).toHaveProperty('name');
-    expect(manager.getRole()).toHaveProperty('id');
-    expect(manager.getRole()).toHaveProperty('email');
-    expect(manager.getRole()).toHaveProperty('officeNumber');
+    expect(manager.getRole()).toBe('Manager');
 });
