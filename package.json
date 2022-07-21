@@ -1,0 +1,26 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Generate an HTML page that will display summaries for each team member using Node.js.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devBritt/team-profile-generator.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devBritt/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/devBritt/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "8.2",
+    "jest": "^28.1.3"
+  }
+}
