@@ -3,9 +3,49 @@ const { writeFile } = require('fs');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-const mockData = require('./src/mockAnswers');
 // const generateHTML = require('./src/generateHTML');
 // const generateCSS = require('./src/generateCSS');
+
+// mock data for testing
+const mockAnswers = [
+    new Manager({
+        name: 'Jamie',
+        id: '0173',
+        email: 'jamie@company.com',
+        officeNumber: '05'
+    }),
+    new Manager({
+        name: 'Adrian',
+        id: '0180',
+        email: 'adrian@company.com',
+        officeNumber: '08'
+    }),
+    new Intern({
+        name: 'Harper',
+        id: '0249',
+        email: 'harper@company.com',
+        school: 'Northern National University'
+    }),
+    new Intern({
+        name: 'Drew',
+        id: '0249',
+        email: 'drew@company.com',
+        school: 'Southern National University'
+    }),
+    new Engineer({
+        name: 'Blake',
+        id: '0132',
+        email: 'blake@company.com',
+        github: 'blakecodes'
+    }),
+    new Engineer({
+        name: 'Hayden',
+        id: '0217',
+        email: 'hayden@company.com',
+        github: 'devhayden'
+    })
+];
+
 
 // array of questions for user prompts
 const questions = [
@@ -125,7 +165,6 @@ const questions = [
 // TODO: write a function to write to a file
 
 
-// TODO: write a function to prompt user
 async function promptUser(employeeList) {
     if (!employeeList) {
         // initialize employeeList
@@ -141,6 +180,7 @@ async function promptUser(employeeList) {
     return prompt(questions)
         .then(answers => {
             let employee;
+            // create respective employee object
             switch (answers.role) {
                 case 'Manager':
                     employee = new Manager(answers);
@@ -152,7 +192,9 @@ async function promptUser(employeeList) {
                     employee = new Engineer(answers);
                     break;
             }
+            // add employee object to list of employees
             employeeList.push(employee);
+            // check if user wants to add another employee
             if (answers.confirmAddEmployee) {
                 return promptUser(employeeList);
             } else {
@@ -164,8 +206,12 @@ async function promptUser(employeeList) {
 
 async function init() {
     // prompt user for info
-    const answers = await promptUser();
-    console.log(answers);
-}
+    // const answers = await promptUser();
+    
+    // use input to generate markup and write to file
+
+    // generate css and write to file
+
+};
 
 init();
