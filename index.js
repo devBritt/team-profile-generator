@@ -113,6 +113,12 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'confirm',
+        name: 'confirmAddEmployee',
+        message: 'Would you like to add another employee?',
+        default: false
     }
 ];
 
@@ -120,14 +126,27 @@ const questions = [
 
 
 // TODO: write a function to prompt user
-async function promptUser(employeeData = []) {
+async function promptUser(employeeList) {
+    if (!employeeList) {
+        // initialize employeeList
+        employeeList = [];
+    };
+    
     console.log(`
     ==================
     Add a New Employee
     ==================
     `);
 
-    return prompt(questions);
+    return prompt(questions)
+        .then(answers => {
+            employeeList.push(answers);
+            if (answers.confirmAddEmployee) {
+                return promptUser(employeeList);
+            } else {
+                return employeeList;
+            }
+        });
 }
 
 
