@@ -56,7 +56,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'officeNum',
+        name: 'officeNumber',
         message: "What is this manager's office number?",
         validate: officeNumInput => {
             if (officeNumInput) {
@@ -98,8 +98,8 @@ const questions = [
         type: 'input',
         name: 'github',
         message: "What is this engineer's GitHub username?",
-        validate: username => {
-            if (username && !username.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i)) {
+        validate: githubInput => {
+            if (githubInput && githubInput.match(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i)) {
                 return true;
             } else {
                 console.log("Please enter a valid GitHub username. (must begin and end with alphanumeric characters, can include hyphens but not consecutively, have a max of 39 characters)");
@@ -140,7 +140,19 @@ async function promptUser(employeeList) {
 
     return prompt(questions)
         .then(answers => {
-            employeeList.push(answers);
+            let employee;
+            switch (answers.role) {
+                case 'Manager':
+                    employee = new Manager(answers);
+                    break;
+                case 'Intern':
+                    employee = new Intern(answers);
+                    break;
+                case 'Engineer':
+                    employee = new Engineer(answers);
+                    break;
+            }
+            employeeList.push(employee);
             if (answers.confirmAddEmployee) {
                 return promptUser(employeeList);
             } else {
