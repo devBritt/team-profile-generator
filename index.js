@@ -27,7 +27,7 @@ const questions = [
         name: 'id',
         message: "What is the employee's ID number?",
         validate: idInput => {
-            if (idInput && idInput.match(/\d/i)) {
+            if (idInput && parseInt(idInput)) {
                 return true;
             } else {
                 console.log('You must enter a valid ID number. (Numbers only)');
@@ -119,10 +119,21 @@ const questions = [
 // TODO: write a function to write to a file
 
 
-// TODO: write a function to initialize the app
+// TODO: write a function to prompt user
+async function promptUser(employeeData = []) {
+    console.log(`
+    ==================
+    Add a New Employee
+    ==================
+    `);
+
+    return prompt(questions);
+}
+
+
 async function init() {
     // prompt user for info
-    const answers = await prompt(questions);
+    const answers = await promptUser();
     console.log(answers);
 }
 
