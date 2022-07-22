@@ -2,8 +2,9 @@
     --primary: #8f00fc;
     --secondary: #f954e0;
     --accent: #facb5d;
-    --light: #ffffff;
+    --light: #E3DBE3;
     --dark: #4f1c87;
+    --white: #ffffff;
     --black: #282c40;
     --border-radius: 0.2rem;
     --spacing-one: calc(1rem * 0.25);
@@ -16,56 +17,70 @@
 * {
     box-sizing: border-box;
 }
-
 body {
-    background-color: var(--light);
+    background-color: var(--white);
     margin: 0;
     padding: 0;
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
-    color: var(--dark);
+    color: var(--black);
     line-height: 1.5;
     font-size: 14px;
 }
-
 h1,
 h2 {
     margin: 5px 0;
     line-height: 1.25;
-    color: var(--light);
+    color: var(--white);
 }
-
 h1 {
     font-weight: 700;
     font-size: 2.25rem;
 }
-
 h2 {
     font-weight: 500;
     font-size: 2rem;
 }
-
 p {
     font-size: 1.1rem;
     margin-top: 0;
 }
-
 a {
     text-decoration: none;
     color: var(--secondary)
 }
-
 header {
     background-color: var(--primary);
     position: sticky;
     top: 0;
 }
-
 .page-title {
     text-align: center;
     width: 100%;
     margin: 0;
     font-size: 2.5rem;
+}
+.lg-icon,
+.sm-icon {
+    stroke: var(--dark);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+.lg-icon {
+    width: 24px;
+    height: 24px;
+}
+.sm-icon {
+    width: 16px;
+    height: 16px;
+}
+.employee-details {
+    margin: 0;
+    padding: 1.5%;
+    border-bottom: 2px solid linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+    background-color: var(--light);
 }
 
 /* CARDS */
@@ -74,7 +89,11 @@ header {
     border-radius: var(--border-radius);
     background-color: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
 }
-
+.card-header, .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .card-header {
     text-align: center;
     width: 100%;
@@ -82,16 +101,27 @@ header {
     background: none;
     padding: 2.5%;
 }
-
+.card-divider {
+    position: relative;
+}
+.card-divider:before {
+    width: 6.5rem;
+    height: 6.5rem;
+    background: var(--white);
+    border-radius: 100%;
+    position: absolute;
+    top: -3.25rem;
+    left: calc(50% - 3.25rem);
+}
 .card-icon {
-    background: var(--light);
+    background: var(--white);
     border-radius: 100%;
     padding: 2.5%;
 }
-
 .card-body {
+    margin: 2.5%;
     padding: 2.5%;
-    background: var(--light);
+    background: var(--white);
     border-radius: var(--border-radius);
 }
 
