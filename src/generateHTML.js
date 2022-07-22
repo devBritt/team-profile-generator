@@ -14,6 +14,9 @@ module.exports = employees => {
             <meta name='viewport' content='width=device-width, initial-scale=1.0'>
             <meta http-equiv='X-UA-Compatible' content='ie=edge'>
             <title>My Team</title>
+            <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/simple-icons/7.4.0/simpleicons.svg'>
+            <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+            <link rel='stylesheet' href='./style.css'>
         </head>
 
         <body>
