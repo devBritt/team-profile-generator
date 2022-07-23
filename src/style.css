@@ -24,7 +24,6 @@ body {
     font-weight: 300;
     color: var(--black);
     line-height: 1.5;
-    font-size: 14px;
 }
 main {
     width: 100vw;
@@ -56,7 +55,7 @@ h3 {
 }
 p,
 a {
-    font-size: 1.1rem;
+    font-size: 14px;
     margin-top: 0;
 }
 a {
@@ -168,10 +167,17 @@ header {
     flex: 0 0 100%;
 }
 
+/* md screen */
+@media screen and (min-width: 572px) {
+    p,
+    a {
+        font-size: 1.1rem;
+    }
+}
 /* col-md */
-@media screen and (min-width: 768px) {
-    .col-md-5 {
-        flex: 0 0 calc(100% * 5 / 12 - 0.5%);
+@media screen and (min-width: 630px) {
+    .col-md-6 {
+        flex: 0 0 calc(100% * 6 / 12 - 0.5%);
     }
 }
 
@@ -180,7 +186,7 @@ header {
     .page-title {
         width: auto;
     }
-    .col-lg-3 {
-        flex: 0 0 calc(100% * 3 / 12 - 0.5%);
+    .col-lg-4 {
+        flex: 0 0 calc(100% * 4 / 12 - 0.5%);
     }
 }

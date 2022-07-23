@@ -28,7 +28,7 @@ const generateDetailRow = employee => {
 // generate markup for an employee card
 const generateEmployeeCard = employee => {
     return `
-            <article class='col-12 col-md-5 col-lg-3'>
+            <article class='col-12 col-md-6 col-lg-4'>
                 <div class='card'>
                     <div class='card-header flex-row'>
                         <div class='col-4 justify-flex-end'>

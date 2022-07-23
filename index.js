@@ -55,10 +55,10 @@ const questions = [
         name: 'name',
         message: "Enter an employee's name:",
         validate: nameInput => {
-            if (nameInput && !nameInput.match(/[^a-zA-Z\s]/gi)) {
+            if (nameInput && !nameInput.match(/[^a-zA-Z]/gi)) {
                 return true;
             } else {
-                console.log('You must enter a valid name! (No numbers or symbols)');
+                console.log('You must enter a valid name! (First name only, no numbers or symbols)');
                 return false;
             };
         }
@@ -68,7 +68,7 @@ const questions = [
         name: 'id',
         message: "What is the employee's ID number?",
         validate: idInput => {
-            if (idInput && parseInt(idInput)) {
+            if (idInput && !idInput.match(/[^0-9]/gi)) {
                 return true;
             } else {
                 console.log('You must enter a valid ID number. (Numbers only)');
@@ -207,10 +207,10 @@ async function promptUser(employeeList) {
 // TODO: switch from mockAnswers to promptUser before submission
 async function init() {
     // prompt user for info
-    // const answers = await promptUser();
+    const answers = await promptUser();
     
     // use input to generate markup and write to file
-    const markup = generateHTML(mockAnswers);
+    const markup = generateHTML(answers);
     console.log(markup);
     // generate css and write to file
 
