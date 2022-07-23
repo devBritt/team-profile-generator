@@ -14,13 +14,13 @@ const getRoleIcon = role => {
 const generateDetailRow = employee => {
     switch(employee.getRole()) {
         case 'Manager':
-            return `<span class='material-icons md-20 md-pink md-margin-r>meeting_room</span>
+            return `<span class='material-icons md-20 md-bright md-margin-r'>meeting_room</span>
                             <p>${employee.getOfficeNumber()}</p>`;
         case 'Intern':
-            return `<span class='material-icons md-20 md-pink md-margin-r>local_library</span>
+            return `<span class='material-icons md-20 md-bright md-margin-r'>local_library</span>
                             <p>${employee.getSchool()}</p>`;
         case 'Engineer':
-            return `<span class='material-icons md-20 md-pink md-margin-r>terminal</span>
+            return `<span class='material-icons md-20 md-bright md-margin-r'>terminal</span>
                             <a>github.com/${employee.getGithub().toLowerCase()}</a>`;
     };
 };
@@ -41,14 +41,14 @@ const generateEmployeeCard = employee => {
                     </div>
                     <div class='card-body flex-row'>
                         <!-- employee id row -->
-                        <div class='employee-details flex-row align-center>
-                            <span class='material-icons md-20 md-pink md-margin-r'>badge</span>
+                        <div class='employee-details flex-row align-center'>
+                            <span class='material-icons md-20 md-bright md-margin-r'>badge</span>
                             <p>${employee.getId()}</p>
                         </div>
                         <!-- employee email row -->
-                        <div class='employee-details flex-row align-center>
-                            <span class='material-icons md-20 md-pink md-margin-r'>email</span>
-                            <a href="mailto:'${employee.getEmail()}'>${employee.getEmail()}</a>
+                        <div class='employee-details flex-row align-center'>
+                            <span class='material-icons md-20 md-bright md-margin-r'>email</span>
+                            <a href='mailto:'${employee.getEmail()}'>${employee.getEmail()}</a>
                         </div>
                         <!-- role-specific details row -->
                         <div class='employee-details flex-row align-center'>
@@ -70,18 +70,18 @@ const generateHTML = employees => {
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <title>My Team</title>
     <!-- icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
     <!-- Oswald font -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap' rel='stylesheet'>
     <link rel='stylesheet' href='./style.css'>
 </head>
 
-<body class="flex-row">
+<body class='flex-row'>
     <header>
         <h1 class='page-title'>My Team</h1>
     </header>
     <main>
-        <section class='flex-row justify-center'>${employees.map(item => generateEmployeeCard(item))}
+        <section class='flex-row justify-center'>${employees.map(item => generateEmployeeCard(item)).join('')}
         </section>
     </main>
 </body>

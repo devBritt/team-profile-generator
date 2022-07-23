@@ -204,7 +204,7 @@ async function promptUser(employeeList) {
         });
 }
 
-
+// TODO: switch from mockAnswers to promptUser before submission
 async function init() {
     // prompt user for info
     // const answers = await promptUser();
