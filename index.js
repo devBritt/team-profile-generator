@@ -1,5 +1,5 @@
 const { prompt } = require('inquirer');
-const { writeFile } = require('fs');
+const { writeFile, copyFile } = require('fs');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
@@ -163,7 +163,6 @@ const questions = [
     }
 ];
 
-// TODO: write a function to write to a file
 
 
 async function promptUser(employeeList) {
@@ -177,43 +176,86 @@ async function promptUser(employeeList) {
     Add a New Employee
     ==================
     `);
-
+    
     return prompt(questions)
-        .then(answers => {
-            let employee;
-            // create respective employee object
-            switch (answers.role) {
-                case 'Manager':
-                    employee = new Manager(answers);
-                    break;
-                case 'Intern':
-                    employee = new Intern(answers);
-                    break;
-                case 'Engineer':
-                    employee = new Engineer(answers);
-                    break;
-            }
-            // add employee object to list of employees
-            employeeList.push(employee);
-            // check if user wants to add another employee
-            if (answers.confirmAddEmployee) {
-                return promptUser(employeeList);
-            } else {
-                return employeeList;
-            }
-        });
+    .then(answers => {
+        let employee;
+        // create respective employee object
+        switch (answers.role) {
+            case 'Manager':
+            employee = new Manager(answers);
+            break;
+            case 'Intern':
+            employee = new Intern(answers);
+            break;
+            case 'Engineer':
+            employee = new Engineer(answers);
+            break;
+        }
+        // add employee object to list of employees
+        employeeList.push(employee);
+        // check if user wants to add another employee
+        if (answers.confirmAddEmployee) {
+            return promptUser(employeeList);
+        } else {
+            return employeeList;
+        }
+    });
 }
 
-// TODO: switch from mockAnswers to promptUser before submission
+async function writeToFile(filename, content) {
+    return new Promise((resolve, reject) => {
+        writeFile(filename, content, err => {
+            // if there's an error, reject and send error to catch
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve({
+                ok: true,
+                message: 'File created successfully! Check it out in the dist directory.'
+            });
+        });
+    });
+};
+
+async function copyToNew(filename, path) {
+    return new Promise((resolve, reject) => {
+        copyFile(filename, path, err => {
+            // if there's an error, reject and send error to catch
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve({
+                ok: true,
+                message: 'File copied successfuly! Check it out in the dist directory.'
+            });
+        });
+    });
+};
+
 async function init() {
     // prompt user for info
     const answers = await promptUser();
     
     // use input to generate markup and write to file
     const markup = generateHTML(answers);
-    console.log(markup);
+    try {
+        let result = await writeToFile('./dist/index.html', markup);
+        console.log(result.message);
+    } catch (err) {
+        console.log(err);
+    };
     // generate css and write to file
-
+    try {
+        let result = await copyToNew('./src/style.css', './dist/style.css');
+        console.log(result.message);
+    } catch (err) {
+        console.log(err);
+    };
 };
 
 init();
