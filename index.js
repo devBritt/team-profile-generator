@@ -3,6 +3,7 @@ const { writeFile } = require('fs');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const generateHTML = require('./src/generateHTML');
 // const generateHTML = require('./src/generateHTML');
 // const generateCSS = require('./src/generateCSS');
 
@@ -209,7 +210,8 @@ async function init() {
     // const answers = await promptUser();
     
     // use input to generate markup and write to file
-
+    const markup = generateHTML(mockAnswers);
+    console.log(markup);
     // generate css and write to file
 
 };
