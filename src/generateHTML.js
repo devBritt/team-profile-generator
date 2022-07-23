@@ -21,7 +21,7 @@ const generateDetailRow = employee => {
                             <p>${employee.getSchool()}</p>`;
         case 'Engineer':
             return `<span class='material-icons md-20 md-bright md-margin-r'>terminal</span>
-                            <a>github.com/${employee.getGithub().toLowerCase()}</a>`;
+                            <a href='https://github.com/${employee.getGithub().toLowerCase()}'>github.com/${employee.getGithub().toLowerCase()}</a>`;
     };
 };
 
