@@ -57,7 +57,7 @@ Answer the prompts to add all of your team members. Once you've completed all th
 ---
 <br />
 
-[![App Screenshot](./assets/My-Team.png)](#)
+[![App Screenshot](./assets/My-Team.png)](https://youtu.be/TgOSl7B3v68)
 
 ### Lessons
 ---
